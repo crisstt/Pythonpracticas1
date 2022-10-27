@@ -87,13 +87,15 @@ def parcialCuatro (ID):
     lista_alumnos[ID][8] = (lista_alumnos[ID][4] + lista_alumnos[ID][5] + lista_alumnos[ID][6] + lista_alumnos[ID][7])/4
 
 def nAlumnosPromedioGeneral(lista_alumnos):
+    sum_general = 0
+    
     for i in range(len(lista_alumnos)):
-        sum_genral = sum_general + lista_alumnos[i][8]
-    prom_general = sum_genral/len(lista_alumnos)
+        sum_general = sum_general + lista_alumnos[i][8]
+    prom_general = sum_general/len(lista_alumnos)
     print('''
 Cantidad de Alumnos en el Salon : {}
 Promedio General del Salon : {}
-''').format(len(lista_alumnos),prom_general)
+'''.format(len(lista_alumnos),prom_general))
         
 def calificacionMinMaxModa(lista_alumnos):
     calif_max = 0
@@ -105,6 +107,7 @@ def calificacionMinMaxModa(lista_alumnos):
         else:
             print("Son Iguales :")
             calif_max = calif_max
+      
     calif_min = 10
     for c in range(len(lista_alumnos)):
         if calif_min > lista_alumnos[c][8]:
@@ -114,8 +117,41 @@ def calificacionMinMaxModa(lista_alumnos):
         else:
             print('Son Iguales :')
             calif_min = calif_min
+    lista_alumnos_moda = []
+    n_veces = []
+    numero = 0
+    calif_sin_repetir = []
     
+    for d in range(len(lista_alumnos)):
+        lista_alumnos_moda.append(lista_alumnos[d][8])
+            
+    for r in range(len(lista_alumnos_moda)):
+        cont = 0
+        if lista_alumnos_moda[r] != '*':
+            for k in range(len(lista_alumnos_moda)):
+                if lista_alumnos_moda[k] != '*':
+                    numero = lista_alumnos_moda[r]
+                    if numero == lista_alumnos_moda[k]:
+                        cont += 1
+            n_veces.append([numero,cont])
+            calif_sin_repetir.append(lista_alumnos_moda[r])
+            for e in range (r,len(lista_alumnos_moda)):
+                if numero == lista_alumnos_moda[e]:
+                    lista_alumnos_moda[e] = '*'
+    modar = 0
+    modan = []
+    for x in range(len(n_veces)):
+        if n_veces[x][1] > modar:
+            modar = n_veces[x][1]
+            modan = n_veces[x]
+        elif n_veces[x][1] < modar:
+            modar = modar
     
+    print('''
+La calificacion que mas se repite es : {} | {} veces
+'''.format(modan[0], modan[1]))
+    print(calif_sin_repetir)
+    print(n_veces)  
 
 continuar = '1'
 
