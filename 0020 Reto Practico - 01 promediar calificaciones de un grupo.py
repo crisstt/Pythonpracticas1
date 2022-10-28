@@ -8,7 +8,7 @@ alumnos_clase = []
 calificacion_clase = []
 calificacionAlumnos = []
 lista_alumnos = []
-x = 0
+x=0
 # Funcion que pide alumonos y las calificaciones
 def alumnos (nombre, a_paterno, a_materno):
     alumno = [nombre, a_paterno , a_materno]
@@ -38,7 +38,8 @@ def calificaciones (parcial_uno, parcial_dos, parcial_tres, parcial_cuatro):
             print('Reprobado')
             status = 'Reprobado'
     imprimirAlumnos(i,promedio,status)
-    guardarAlumnos(i,promedio,status)    
+    guardarAlumnos(i,promedio,status)
+    
 # Funcio que permite ver los datos ingresados si hay algun problema desde ahi detectarlo
 def imprimirAlumnos (i, promedio, status):
     print('''
@@ -58,7 +59,7 @@ def guardarAlumnos (i,promedio,status):
 def mostrarListaAlumnos (lista_alumnos):
     for i in range(len(lista_alumnos)):
         print('''
-{}           {} {} {}                {}  {}  {}  {}            {}           {}
+{}\t\t{} {} {}\t\t |1er {}||2do {}||3ro {}||4to {}||\t\t{}\t\t{}
 '''. format (lista_alumnos[i][0],lista_alumnos[i][1],lista_alumnos[i][2],lista_alumnos[i][3],lista_alumnos[i][4],lista_alumnos[i][5],lista_alumnos[i][6],lista_alumnos[i][7],lista_alumnos[i][8],lista_alumnos[i][9]))
 
 # Funciones Utilizadas para Modificar el Nombre de los Alumnos
@@ -105,7 +106,6 @@ def calificacionMinMaxModa(lista_alumnos):
         elif calif_max < lista_alumnos[m][8]:
             calif_max = lista_alumnos[m][8]
         else:
-            print("Son Iguales :")
             calif_max = calif_max
       
     calif_min = 10
@@ -115,7 +115,6 @@ def calificacionMinMaxModa(lista_alumnos):
         elif calif_min < lista_alumnos[c][8]:
             calif_min = calif_min
         else:
-            print('Son Iguales :')
             calif_min = calif_min
     lista_alumnos_moda = []
     n_veces = []
@@ -140,16 +139,27 @@ def calificacionMinMaxModa(lista_alumnos):
                     lista_alumnos_moda[e] = '*'
     modar = 0
     modan = []
+    modas_n =[]
     for x in range(len(n_veces)):
         if n_veces[x][1] > modar:
             modar = n_veces[x][1]
             modan = n_veces[x]
         elif n_veces[x][1] < modar:
             modar = modar
+    for f in range(len(n_veces)):
+        if modar == n_veces[f][1]:
+            modas_n.append(n_veces[f])
     
     print('''
+Calificacion Max del Salon : {}
+Calificacion Min del Salon : {}
+'''.format(calif_max,calif_min))
+    for w in range(len(modas_n)):
+        print('''
 La calificacion que mas se repite es : {} | {} veces
-'''.format(modan[0], modan[1]))
+'''.format(modas_n[w][0], modas_n[w][1]))
+
+
     print(calif_sin_repetir)
     print(n_veces)  
 
@@ -180,6 +190,7 @@ Introducir accion a realizar
             a_paterno = input('Introduce apellido paterno del alumno : ')
             a_materno = input('Introduce apellido materno del alumno : ')
             alumnos(nombre, a_paterno , a_materno)
+            x += 1
         elif accion == 2:
             print('''
 ¿Que información desea de la clase?
@@ -258,12 +269,12 @@ b) Calificaciones
                     
                         
         elif accion == 4:
-            print ('ID         |           Nombre Completo        |      Calificacion Parcial      |  Promedio  |     Status   |     ')
-            print('                                                               |   1er   |  2do  |   3er  |   4to | ')
+            print ('ID\t|\t\tNombre Completo\t\t|\t\tCalificacion Parcial\t\t|\tPromedio\t|\tStatus\t|')
+            
             mostrarListaAlumnos(lista_alumnos)
         else:
             print('Elección Equivocada')
-    x += 1
+  
     print('''
 Agregar algun dato mas :
 1) SI
