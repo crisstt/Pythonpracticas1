@@ -6,10 +6,10 @@
 # 1 milla = 1.60934 KM
 
 def millasKilometros(dato):
-    kilometros = dato/1.60934
+    kilometros = dato*1.60934
     print('{} Millas es igual a {} kilometros'.format(dato,kilometros))
 def kilometrosMillas(dato):
-    millas = dato * 1.60934
+    millas = dato / 1.60934
     print('{} Kilometros es igual a {} Millas'.format(dato, millas ))
 
 eleccion = '1'
