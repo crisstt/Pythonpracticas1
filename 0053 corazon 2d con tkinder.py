@@ -11,8 +11,8 @@ class Heart(Frame):
 
         self.objects = []
         self.num = 0
-        self.chars = ['➤','➵','➸','✩','✬','⁂','☸','♡','❣','❦','♚','☺','ELY']
-        self.char = '✩'
+        self.chars = ['➤','➵','➸','✩','✬','⁂','☸','♡','❣','❦','♚','☺']
+        self.char = 'ELY'
         
 
         self.create_obj()
@@ -51,7 +51,7 @@ class Heart(Frame):
 if __name__ == '__main__':
     root = Tk()
     root.title('The Love')
-    root.geometry('1200x700')
+    root.geometry('1900x1080')
     app = Heart(root)
     app.mainloop()
         
